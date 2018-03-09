@@ -14,7 +14,13 @@ class LoginForm extends React.Component {
         this.setState({data: {...this.state.data, [e.target.name]:e.target.value}});
     }
     onSubmit = () => {
-        
+        const errors = this.validate(this.state.data);
+        this.setState({errors});
+    }
+    validate =(data) =>{
+        const errors ={};
+        if(!data.password) errors.password="Can't be blank"
+        return errors;
     }
   render() {
     const { data } = this.state;
